@@ -20,4 +20,17 @@ the script does the following:
 1. update `/etc/sysconfig/network` (or `/etc/HOSTNAME` on SUSE) to persist the
    hostname when the instance is rebooted; and
 1. update `/etc/hosts` to associate the hostname with the loopback interface.
-   
+
+## Testing
+
+This module was tested against the following operating systems:
+* Amazon Linux 2
+* Amazon Linux
+* CentOS 7
+* CentOS 6
+* RHEL 7
+* RHEL 6
+* SUSE 15
+* SUSE 11
+* Ubuntu 18
+* Ubuntu 14
