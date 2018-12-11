@@ -34,3 +34,22 @@ This module was tested against the following operating systems:
 * SUSE 11
 * Ubuntu 18
 * Ubuntu 14
+
+## Input Variables
+
+| Name | Description | Default |
+| ---- | ----------- | ------- |
+| `addresses` | list of either private IPs, public IPs, or public DNS names | |
+| `bastion` | public IP or DNS of a bastion | "" |
+| `bastion_private_key_path` | local path to the private key for bastion access | "" |
+| `bastion_user` | ssh user on the bastion | "" |
+| `count` | number of hosts | |
+| `fqdns` | list of FQDNs | | |
+| `private_key_path` | local path to the private key for ssh access | |
+| `user` | ssh user on the hosts | |
+
+## Outputs
+
+| Name | Description |
+| ---- | ----------- |
+| `resource_ids` | provisioner resource IDs |
