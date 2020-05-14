@@ -17,8 +17,8 @@ resource "null_resource" "sethostname-proxy" {
     bastion_private_key = local.bastion_private_key
   }
   provisioner "file" {
-    source      = "${path.module}/scripts/sethostname.sh"
-    destination = "/tmp/"
+    source      = "${path.module}/scripts"
+    destination = "/tmp"
   }
   provisioner "remote-exec" {
     inline = [
@@ -31,25 +31,30 @@ resource "null_resource" "sethostname-proxy" {
 
 resource "null_resource" "sethostname-direct" {
   count = false == local.use_proxy ? var.hcount : 0
-  triggers = {
-    fqdn    = var.fqdns[count.index]
-    address = var.addresses[count.index]
-  }
-  connection {
-    host        = var.addresses[count.index]
-    user        = var.user
-    private_key = local.private_key
-  }
+
   provisioner "file" {
-    source      = "${path.module}/scripts/sethostname.sh"
-    destination = "/tmp/"
+    source      = "${path.module}/scripts"
+    destination = "/tmp"
   }
+
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/sethostname.sh",
       "sudo /tmp/sethostname.sh ${var.fqdns[count.index]}",
       "rm /tmp/sethostname.sh",
     ]
+  }
+
+  connection {
+    type        = "ssh"
+    host        = var.addresses[count.index]
+    user        = var.user
+    private_key = local.private_key
+  }
+
+  triggers = {
+    fqdn    = var.fqdns[count.index]
+    address = var.addresses[count.index]
   }
 }
 
