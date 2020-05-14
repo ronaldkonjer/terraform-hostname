@@ -42,7 +42,7 @@ resource "null_resource" "sethostname-direct" {
   }
   provisioner "file" {
     source      = "${path.module}/scripts/sethostname.sh"
-    destination = "/tmp/sethostname.sh"
+    destination = "/tmp/"
   }
   provisioner "remote-exec" {
     inline = [
