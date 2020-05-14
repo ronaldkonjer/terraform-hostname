@@ -17,13 +17,13 @@ resource "null_resource" "sethostname-proxy" {
     bastion_private_key = local.bastion_private_key
   }
   provisioner "file" {
-    source      = "./scripts/sethostname.sh"
+    source      = path.module + "/scripts/sethostname.sh"
     destination = "/tmp/sethostname.sh"
   }
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/sethostname.sh",
-      "sudo /tmp/sethostname.sh ${var.fqdns[count.index]}",
+      "sudo /tmp/sethostname.sh " + var.fqdns[count.index],
       "rm /tmp/sethostname.sh",
     ]
   }
@@ -41,13 +41,13 @@ resource "null_resource" "sethostname-direct" {
     private_key = local.private_key
   }
   provisioner "file" {
-    source      = "./scripts/sethostname.sh"
+    source      = path.module + "/scripts/sethostname.sh"
     destination = "/tmp/sethostname.sh"
   }
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/sethostname.sh",
-      "sudo /tmp/sethostname.sh ${var.fqdns[count.index]}",
+      "sudo /tmp/sethostname.sh " + var.fqdns[count.index],
       "rm /tmp/sethostname.sh",
     ]
   }
