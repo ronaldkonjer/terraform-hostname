@@ -43,7 +43,7 @@ This module was tested against the following operating systems:
 | `bastion` | public IP or DNS of a bastion | "" |
 | `bastion_private_key_path` | local path to the private key for bastion access | "" |
 | `bastion_user` | ssh user on the bastion | "" |
-| `count` | number of hosts | |
+| `hcount` | number of hosts | |
 | `fqdns` | list of FQDNs | | |
 | `private_key_path` | local path to the private key for ssh access | |
 | `user` | ssh user on the hosts | |

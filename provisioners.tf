@@ -3,7 +3,7 @@
  */
 
 resource "null_resource" "sethostname-proxy" {
-  count = local.use_proxy ? var.count : 0
+  count = local.use_proxy ? var.hcount : 0
   triggers = {
     fqdn    = var.fqdns[count.index]
     address = var.addresses[count.index]
@@ -30,7 +30,7 @@ resource "null_resource" "sethostname-proxy" {
 }
 
 resource "null_resource" "sethostname-direct" {
-  count = false == local.use_proxy ? var.count : 0
+  count = false == local.use_proxy ? var.hcount : 0
   triggers = {
     fqdn    = var.fqdns[count.index]
     address = var.addresses[count.index]

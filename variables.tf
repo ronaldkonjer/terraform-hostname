@@ -2,7 +2,7 @@
  * hostname variables
  */
 
-variable "count" {
+variable "hcount" {
   type        = string
   description = "number of hosts"
 }
