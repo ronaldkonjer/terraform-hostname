@@ -17,7 +17,7 @@ resource "null_resource" "sethostname-proxy" {
     bastion_private_key = local.bastion_private_key
   }
   provisioner "file" {
-    source      = "${path.module}/scripts/sethostname.sh"
+    source      = "./scripts/sethostname.sh"
     destination = "/tmp/sethostname.sh"
   }
   provisioner "remote-exec" {
@@ -41,7 +41,7 @@ resource "null_resource" "sethostname-direct" {
     private_key = local.private_key
   }
   provisioner "file" {
-    source      = "${path.module}/scripts/sethostname.sh"
+    source      = "./scripts/sethostname.sh"
     destination = "/tmp/sethostname.sh"
   }
   provisioner "remote-exec" {
