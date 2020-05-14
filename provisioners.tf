@@ -17,7 +17,7 @@ resource "null_resource" "sethostname-proxy" {
     bastion_private_key = local.bastion_private_key
   }
   provisioner "file" {
-    source      = "${path.module}/scripts"
+    source      = "${path.module}/scripts/"
     destination = "/tmp"
   }
   provisioner "remote-exec" {
@@ -33,7 +33,7 @@ resource "null_resource" "sethostname-direct" {
   count = false == local.use_proxy ? var.hcount : 0
 
   provisioner "file" {
-    source      = "${path.module}/scripts"
+    source      = "${path.module}/scripts/"
     destination = "/tmp"
   }
 
